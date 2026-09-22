@@ -50,8 +50,7 @@ I am open to **Junior Data Scientist** and **Machine Learning Engineer** opportu
 ### GitHub activity
 
 <p align="center">
-  <img height="155" src="https://github-readme-stats.vercel.app/api?username=zealcoder95&show_icons=true&hide_border=true&bg_color=0B1024&title_color=22D3EE&text_color=CBD5E1&icon_color=A855F7" alt="Gizem's GitHub statistics" />
-  <img height="155" src="https://github-readme-stats.vercel.app/api/top-langs/?username=zealcoder95&layout=compact&hide_border=true&bg_color=0B1024&title_color=22D3EE&text_color=CBD5E1" alt="Most used languages" />
+  <img src="./assets/github-activity-card.png" width="100%" alt="GitHub activity — contributions, public repositories and followers" />
 </p>
 
 ---
