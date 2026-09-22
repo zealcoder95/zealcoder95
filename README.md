@@ -15,25 +15,47 @@
   <a href="https://www.kaggle.com/gizemglc"><img alt="Kaggle" src="https://img.shields.io/badge/Kaggle-A855F7?style=for-the-badge&logo=kaggle&logoColor=white" /></a>
 </p>
 
----
+<p align="center">
+  <img src="./assets/neon-divider.png" width="100%" alt="" />
+</p>
 
 ### What I build
 
-- **Data products** — analysis that ends with a decision, not just a chart.
-- **Machine learning projects** — reproducible workflows with clear evaluation.
-- **AI experiences** — approachable interfaces that make intelligent systems useful.
-- **Engineering-led solutions** — structured problem solving shaped by my EEE background.
+| | |
+|---|---|
+| **◆ Data products**<br/>Analysis that ends with a decision, not just a chart. | **◇ Machine learning**<br/>Reproducible workflows with clear evaluation. |
+| **✦ AI experiences**<br/>Approachable interfaces that make intelligent systems useful. | **⬡ Engineering solutions**<br/>Structured problem solving shaped by my EEE background. |
 
-I am open to **Junior Data Scientist** and **Machine Learning Engineer** opportunities.
+> Open to **Junior Data Scientist** and **Machine Learning Engineer** opportunities.
+
+<p align="center">
+  <img src="./assets/neon-divider.png" width="100%" alt="" />
+</p>
 
 ### Featured work
 
-| Project | What it demonstrates | Stack |
+| Project | Focus and outcome | Stack | Explore |
+|---|---|---|---|
+| **ZealCat AI Portfolio** | Context-aware AI companion, polished web experience and personal product design | JavaScript · HTML · CSS · Vercel | [Repository](https://github.com/zealcoder95/zealcoder-portfolio) · [Live](https://zealcoder-portfolio.vercel.app/) |
+| **E-commerce SQL Analytics** | Business-focused querying and structured analysis of commerce data | T-SQL · SQL analytics | [Repository](https://github.com/zealcoder95/ecommerce-sql-project) |
+| **NYC High School Data** | Data cleaning, exploratory analysis and communicating relationships in education data | Python · Pandas · Jupyter | [Repository](https://github.com/zealcoder95/Analyzing-NYC-High-School-Data) |
+
+<details>
+<summary><strong>More data projects and case studies</strong></summary>
+<br/>
+
+| Project | Focus | Explore |
 |---|---|---|
-| [**ZealCat AI Portfolio**](https://github.com/zealcoder95/zealcoder-portfolio) · [Live](https://zealcoder-portfolio.vercel.app/) | Context-aware AI assistant, polished web experience and personal product design | JavaScript, HTML, CSS, Vercel |
-| [**E-commerce SQL Analytics**](https://github.com/zealcoder95/ecommerce-sql-project) | Business-focused querying and structured analysis of commerce data | T-SQL, SQL analytics |
-| [**NYC High School Data**](https://github.com/zealcoder95/Analyzing-NYC-High-School-Data) | Data cleaning, exploratory analysis and communicating relationships in education data | Python, Pandas, Jupyter |
-| [**Kaggle Notebooks**](https://www.kaggle.com/gizemglc/code) | Applied analysis across sales, climate and public datasets | Python, visualization, ML |
+| **Adana Energy & Climate** | Energy generation, emissions, seasonality and forecasting | [Kaggle](https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana) |
+| **Adidas US Sales Analysis** | Sales trends, product performance and regional insights | [Kaggle](https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis) |
+| **Employee Exit Surveys** | Data cleaning and analysis of employee dissatisfaction | [Kaggle](https://www.kaggle.com/code/gizemglc/clean-and-analyze-employee-exit-surveys-1-1) |
+| **Kaggle Notebooks** | Complete collection of applied data projects | [View all](https://www.kaggle.com/gizemglc/code) |
+
+</details>
+
+<p align="center">
+  <img src="./assets/neon-divider.png" width="100%" alt="" />
+</p>
 
 ### Core toolkit
 
@@ -47,13 +69,19 @@ I am open to **Junior Data Scientist** and **Machine Learning Engineer** opportu
   <img src="https://img.shields.io/badge/Git-0B1024?style=flat-square&logo=git&logoColor=F97316" alt="Git" />
 </p>
 
+<p align="center">
+  <img src="./assets/neon-divider.png" width="100%" alt="" />
+</p>
+
 ### GitHub activity
 
 <p align="center">
   <img src="./assets/github-activity-card.png" width="100%" alt="GitHub activity — contributions, public repositories and followers" />
 </p>
 
----
+<p align="center">
+  <img src="./assets/neon-divider.png" width="100%" alt="" />
+</p>
 
 <p align="center">
   <strong>Adana, Türkiye</strong> · Building at the intersection of data, AI and engineering.<br/>
