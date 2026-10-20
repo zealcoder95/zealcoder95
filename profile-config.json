@@ -1,0 +1,28 @@
+{
+  "owner": "zealcoder95",
+  "max_cards": 4,
+  "exclude_repositories": ["zealcoder95"],
+  "hide_topic": "hide-from-profile",
+  "catalog_url": "https://raw.githubusercontent.com/zealcoder95/zealcoder-portfolio/main/assets/projects.json",
+  "kaggle_url": "https://raw.githubusercontent.com/zealcoder95/zealcoder-portfolio/main/assets/kaggle-feed.json",
+  "aliases": {
+    "https://www.kaggle.com/code/gizemglc/analyzing-nyc-high-school-data": "https://github.com/zealcoder95/Analyzing-NYC-High-School-Data"
+  },
+  "fallbacks": {
+    "zealcoder-portfolio": {
+      "title": "ZealCat · AI Portfolio",
+      "description": "A bilingual portfolio with a context-aware AI companion and a serverless Gemini integration.",
+      "tools": ["JavaScript", "Gemini API", "Vercel"]
+    },
+    "ecommerce-sql-project": {
+      "title": "E-commerce SQL",
+      "description": "Relational database design, views, stored procedures and analytical queries.",
+      "tools": ["T-SQL", "SQL Server"]
+    },
+    "TurkStudentCo-DSB-homework": {
+      "title": "Data Science Bootcamp Exercises",
+      "description": "Coursework and practice from the TurkStudentCo data science bootcamp.",
+      "tools": []
+    }
+  }
+}
