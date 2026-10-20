@@ -89,6 +89,7 @@ class ProfileTests(unittest.TestCase):
         self.assertIn("&lt;script&gt;", svg)
         html = profile.render_highlights([project], selected)
         self.assertNotIn("<script>", html)
+        self.assertNotIn("<script>", profile.render_archive([project]))
         with self.assertRaises(ValueError):
             profile.safe_url("javascript:alert(1)")
 
@@ -168,6 +169,31 @@ class ProfileTests(unittest.TestCase):
             self.assertFalse(request.call_args.args[0].has_header("Authorization"))
             profile.fetch_json("https://api.github.com/users/tester/repos")
             self.assertEqual(request.call_args.args[0].get_header("Authorization"), "Bearer test-token")
+
+    def test_new_repository_keeps_its_own_cover_after_ranking_changes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.make_root(root)
+            config = dict(CONFIG, presentations={"github:1": {"category": "SQL", "visual": "sql"}})
+            (root / "profile-config.json").write_text(json.dumps(config))
+            def fetch(url):
+                if "api.github.com" in url:
+                    return [repo(1, "existing-sql", 4), repo(2, "brand-new", 0, "2026-10-20T01:00:00Z")]
+                return {"items": []}
+            profile.update(root, fetch)
+            first = (root / "assets/live/project-1.svg").read_text()
+            second = (root / "assets/live/project-2.svg").read_text()
+            self.assertIn("brand-new", first)
+            self.assertNotIn("Tables &amp; relationships", first)
+            self.assertIn("Tables &amp; relationships", second)
+            self.assertIn("brand-new", (root / "README.md").read_text())
+
+    def test_project_demo_link_is_kept_in_the_unified_showcase(self):
+        projects = profile.build_projects(sources([repo()]), CONFIG)
+        selected = profile.select_highlights(projects, 4)
+        html = profile.render_highlights(projects, selected, {"github:1": {"demo_url": "https://example.org/demo", "demo_label": "Try the app"}})
+        self.assertIn('href="https://example.org/demo">Try the app', html)
+        self.assertIn('href="https://github.com/tester/project"', html)
 
 
 if __name__ == "__main__":

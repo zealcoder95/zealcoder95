@@ -7,15 +7,17 @@ The `Refresh profile` GitHub Actions workflow checks public project metadata eve
 - New public, original, active GitHub repositories; their descriptions, language, star counts and last code-push dates.
 - Kaggle notebook titles, upvotes and last-run dates from the portfolio's existing daily `assets/kaggle-feed.json`.
 - Project titles, descriptions and tools from the portfolio's `assets/projects.json` catalog.
-- Up to four compact homepage highlights, plus a collapsed archive of all eligible projects.
+- One homepage showcase with up to four projects, plus a collapsed archive of all eligible projects. Each project appears once in the visible showcase.
 
 Highlights prioritize the newest GitHub repository, most-starred GitHub project, most-upvoted Kaggle notebook and latest Kaggle notebook. A project can qualify for multiple labels but appears only once. Remaining slots show recently updated projects. Zero-star or zero-upvote projects are never labeled most popular. GitHub stars and Kaggle upvotes are ranked separately.
 
-The banner, case studies, personal introduction and technical toolkit are maintained manually. Adding a library to a repository does not automatically claim proficiency on the profile. Repository descriptions take priority over catalog descriptions; known projects have configured fallback descriptions when GitHub has none.
+The banner, personal introduction and technical toolkit are maintained manually. Adding a library to a repository does not automatically claim proficiency on the profile. Repository descriptions take priority over catalog descriptions; known projects have configured fallback descriptions when GitHub has none.
+
+Known projects use consistent SVG covers: the NYC card plots the exact saved borough safety values, while ZealCat, Adidas and SQL use descriptive application/analysis diagrams. Diagrams do not show measured performance. When Adana is selected, its original monthly generation chart is embedded in full. Graph provenance is recorded in `assets/profile-project-sources.json`. Covers are matched to stable project keys rather than card positions, so a newly selected repository cannot inherit a different project's chart. Unconfigured projects receive the same layout with a neutral code symbol and their real metadata.
 
 ## Configuration
 
-Edit `profile-config.json` to change the owner, public catalog/feed URLs, fallback descriptions or exclusions. Add the topic `hide-from-profile` to hide a repository. Forks, private, archived and disabled repositories, and this profile repository itself, are excluded. `aliases` maps a Kaggle URL to an equivalent GitHub URL to avoid duplicates. Keep the two `PROFILE:HIGHLIGHTS` and two `PROFILE:ARCHIVE` comment markers in `README.md`; only their contents are regenerated.
+Edit `profile-config.json` to change the owner, public catalog/feed URLs, fallback descriptions or exclusions. `presentations` optionally maps stable project keys to a cover style, category and HTTPS live-demo link; it is not required for new projects to appear. Add the topic `hide-from-profile` to hide a repository. Forks, private, archived and disabled repositories, and this profile repository itself, are excluded. `aliases` maps a Kaggle URL to an equivalent GitHub URL to avoid duplicates. Keep the two `PROFILE:HIGHLIGHTS` and two `PROFILE:ARCHIVE` comment markers in `README.md`; only their contents are regenerated.
 
 Run locally with Python 3.10+:
 

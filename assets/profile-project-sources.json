@@ -26,5 +26,15 @@
     "source": "https://github.com/zealcoder95/zealcoder-portfolio/blob/main/api/chat.js",
     "components": ["Bilingual chat interface", "Serverless API with portfolio context", "Gemini API"],
     "note": "Application integration using an external model; no claim of training a foundation model."
+  },
+  "adidas": {
+    "source": "https://github.com/zealcoder95/zealcoder95/blob/main/datascience_projects/Adidas%20US%20Sales%20Analysis.ipynb",
+    "dimensions": ["Retailer", "Product", "Region", "Sales channel"],
+    "note": "The compact cover summarizes analysis dimensions present in the notebook. It is a descriptive diagram, not a chart of measured sales values."
+  },
+  "sql": {
+    "source": "https://github.com/zealcoder95/ecommerce-sql-project/blob/main/README.md",
+    "components": ["Tables and relationships", "Views and stored procedures", "Analytical queries"],
+    "note": "The compact cover summarizes documented database components; it is not an exact schema diagram or a performance benchmark."
   }
 }

@@ -10,6 +10,8 @@ on:
       - 'scripts/update_profile.py'
       - 'tests/**'
       - 'profile-config.json'
+      - 'assets/profile-project-sources.json'
+      - 'assets/profile-source/**'
       - '.github/workflows/refresh-profile.yml'
 
 permissions:
