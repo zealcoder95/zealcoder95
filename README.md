@@ -79,9 +79,10 @@ Data analysis, SQL and applied AI — explore the code, notebooks and ideas behi
   <img src="./assets/badges/tensorflow.svg" alt="TensorFlow" />
 </p>
 
-**Engineering & delivery**
+**Applied AI & delivery**
 
 <p>
+  <img src="./assets/badges/gemini-api.svg" alt="Gemini API" />
   <img src="./assets/badges/git.svg" alt="Git" />
   <img src="./assets/badges/javascript.svg" alt="JavaScript" />
   <img src="./assets/badges/vercel.svg" alt="Vercel" />

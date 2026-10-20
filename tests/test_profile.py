@@ -184,8 +184,8 @@ class ProfileTests(unittest.TestCase):
             first = (root / "assets/live/project-1.svg").read_text()
             second = (root / "assets/live/project-2.svg").read_text()
             self.assertIn("brand-new", first)
-            self.assertNotIn("Tables &amp; relationships", first)
-            self.assertIn("Tables &amp; relationships", second)
+            self.assertNotIn("customer_id", first)
+            self.assertIn("customer_id", second)
             self.assertIn("brand-new", (root / "README.md").read_text())
 
     def test_project_demo_link_is_kept_in_the_unified_showcase(self):
@@ -194,6 +194,79 @@ class ProfileTests(unittest.TestCase):
         html = profile.render_highlights(projects, selected, {"github:1": {"demo_url": "https://example.org/demo", "demo_label": "Try the app"}})
         self.assertIn('href="https://example.org/demo">Try the app', html)
         self.assertIn('href="https://github.com/tester/project"', html)
+
+    def test_catalog_approach_and_output_follow_cross_platform_aliases(self):
+        config = dict(CONFIG, aliases={"https://www.kaggle.com/code/tester/analysis": "https://github.com/tester/project"})
+        catalog = [{"link": "https://www.kaggle.com/code/tester/analysis", "title": {"en": "Analysis"},
+                    "method": {"en": 'OLS & <script>alert("x")</script>', "tr": "Turkish method"},
+                    "result": {"en": "Observed an association, not causation."}}]
+        projects = profile.build_projects(sources([repo()], [notebook()], catalog), config)
+        self.assertEqual(len(projects), 1)
+        self.assertEqual(projects[0]["method"], 'OLS & <script>alert("x")</script>')
+        self.assertEqual(projects[0]["result"], "Observed an association, not causation.")
+        html = profile.render_highlights(projects, profile.select_highlights(projects, 4))
+        self.assertIn("Approach", html)
+        self.assertIn("Observed an association", html)
+        self.assertIn("&lt;script&gt;", html)
+        self.assertNotIn("<script>", html)
+        self.assertNotIn("Turkish method", html)
+        self.assertNotIn("<script>", profile.render_archive(projects))
+
+    def test_method_only_catalog_change_updates_showcase_and_stays_idempotent(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.make_root(root)
+            method = "Initial approach"
+            def fetch(url):
+                if url == CONFIG["catalog_url"]:
+                    return {"items": [{"link": "https://github.com/tester/project",
+                                       "method": {"en": method}, "result": {"en": "A usable report"}}]}
+                return self.fake_fetch(url)
+            profile.update(root, fetch)
+            method = "Revised approach from the portfolio catalog"
+            self.assertIn("README.md", profile.update(root, fetch))
+            html = (root / "README.md").read_text()
+            self.assertIn(method, html)
+            self.assertIn("A usable report", html)
+            self.assertNotIn("Initial approach", html)
+            self.assertEqual(profile.update(root, fetch), [])
+
+    def test_fallback_details_and_description_only_projects_remain_readable(self):
+        config = dict(CONFIG, fallbacks={"project": {"method": "A serverless API", "result": "A working app"}})
+        project = profile.build_projects(sources([repo()]), config)[0]
+        self.assertEqual(project["method"], "A serverless API")
+        self.assertEqual(project["result"], "A working app")
+        plain = profile.build_projects(sources([repo(2, "new-project")]), config)[0]
+        html = profile.render_highlights([plain], profile.select_highlights([plain], 4))
+        self.assertIn("Real project description", html)
+        self.assertNotIn("<strong>Approach</strong>", html)
+        self.assertNotIn("<strong>Output</strong>", html)
+
+    def test_sales_chart_values_match_saved_notebook_output(self):
+        root = Path(__file__).resolve().parents[1]
+        evidence = json.loads((root / "assets/profile-project-sources.json").read_text())
+        notebook_data = json.loads((root / "datascience_projects/Adidas US Sales Analysis.ipynb").read_text())
+        cell = notebook_data["cells"][evidence["adidas"]["sourceCellIndex"]]
+        output = "".join("".join(item.get("text", item.get("data", {}).get("text/plain", [])))
+                         for item in cell["outputs"]).split("Name: Total Sales")[0]
+        import re
+        region, totals, count = None, {}, 0
+        for line in output.splitlines():
+            heading = re.match(r"^(Midwest|Northeast|South|Southeast|West)\s", line)
+            if heading:
+                region = heading[1]
+            value = re.search(r"(\d+\.\d+)\s*$", line)
+            if value:
+                self.assertIsNotNone(region)
+                totals[region] = totals.get(region, 0) + float(value[1])
+                count += 1
+        self.assertEqual(count, 54)
+        self.assertEqual(totals, {item["region"]: item["sales"] for item in evidence["adidas"]["values"]})
+        project = profile.build_projects(sources(notebooks=[notebook()]), CONFIG)[0]
+        svg = profile.render_card(project, ["Most upvoted on Kaggle"], 1, {"visual": "sales"}, evidence)
+        ET.fromstring(svg)
+        for region, total in totals.items():
+            self.assertIn(f"{region}: {int(total):,}", svg)
 
 
 if __name__ == "__main__":

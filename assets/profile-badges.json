@@ -125,6 +125,14 @@
       "path": "m12 1.608 12 20.784H0Z",
       "stroke": false,
       "source": "Simple Icons"
+    },
+    {
+      "id": "gemini-api",
+      "label": "GEMINI API",
+      "color": "violet",
+      "path": "M12 2C12 8 8 12 2 12c6 0 10 4 10 10 0-6 4-10 10-10-6 0-10-4-10-10Z",
+      "stroke": true,
+      "source": "Original generic symbol"
     }
   ]
 }

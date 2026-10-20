@@ -100,6 +100,7 @@ def catalog_source(payload):
         result.append({
             "url": safe_url(item["link"]), "title": english(item.get("title")),
             "description": english(item.get("desc")),
+            "method": english(item.get("method")), "result": english(item.get("result")),
             "tools": [clean(tool) for tool in item.get("tools", [])],
             "updated_at": date(item.get("updatedAt")),
         })
@@ -151,6 +152,8 @@ def build_projects(sources, config):
         project = {
             "key": repo["key"], "title": details.get("title") or fallback.get("title") or repo["name"],
             "description": repo["description"] or details.get("description") or fallback.get("description", ""),
+            "method": english(details.get("method") or fallback.get("method")),
+            "result": english(details.get("result") or fallback.get("result")),
             "tools": list(tools), "links": [{"label": "GitHub", "url": repo["url"]}],
             "stars": repo["stars"], "created_at": repo["created_at"], "updated_at": repo["updated_at"],
         }
@@ -170,6 +173,7 @@ def build_projects(sources, config):
             project = {
                 "key": notebook["key"], "title": details.get("title") or notebook["title"],
                 "description": details.get("description", ""), "tools": list(details.get("tools", [])),
+                "method": english(details.get("method")), "result": english(details.get("result")),
                 "links": [], "created_at": "", "updated_at": notebook["updated_at"],
             }
             projects[project["key"]] = project
@@ -187,6 +191,7 @@ def build_projects(sources, config):
             key = "catalog:" + url
             projects[key] = {
                 "key": key, "title": details["title"], "description": details["description"],
+                "method": english(details.get("method")), "result": english(details.get("result")),
                 "tools": details["tools"], "links": [{"label": "Project", "url": details["url"]}],
                 "created_at": "", "updated_at": details["updated_at"],
             }
@@ -270,25 +275,38 @@ def card_art(visual, evidence, accent, platform):
         body += svg_text(280, 230, 17, "Interface → context → model", muted + ' text-anchor="middle"')
         return body + svg_text(26, 268, 11, "Application flow · external model integration", muted)
     if visual == "sales":
-        body = svg_text(26, 79, 18, "Four perspectives on sales performance", 'font-weight="600"')
-        for index, (label, detail) in enumerate((("Retailer", "Market share"), ("Product", "Product mix"), ("Region", "Regional patterns"), ("Channel", "Sales methods"))):
-            x, y = 28 + index % 2 * 260, 98 + index // 2 * 75
-            body += f'<rect x="{x}" y="{y}" width="244" height="63" rx="11" fill="#111f37" stroke="#354766"/>'
-            body += f'<rect x="{x+15}" y="{y+16}" width="4" height="31" rx="2" fill="{accent}"/>'
-            body += svg_text(x + 32, y + 27, 22, label, 'font-weight="600"')
-            body += svg_text(x + 32, y + 48, 14, detail, muted)
-        return body + svg_text(26, 268, 11, "Analysis dimensions · Adidas US sales notebook", muted)
+        body = svg_text(26, 79, 18, "Total sales by region", 'font-weight="600"')
+        baseline, height, maximum = 222, 122, 300_000_000
+        for tick in (0, 150, 300):
+            y = baseline - tick / 300 * height
+            body += f'<path d="M64 {y}h456" stroke="#293751"/>'
+            body += svg_text(52, y + 4, 12, tick, muted + ' text-anchor="end"')
+        for index, item in enumerate(evidence["adidas"]["values"]):
+            x, value = 91 + index * 86, item["sales"]
+            bar_height = value / maximum * height
+            body += f'<rect x="{x}" y="{baseline-bar_height:.2f}" width="44" height="{bar_height:.2f}" rx="5" fill="url(#accent)"><title>{escape(item["region"])}: {value:,}</title></rect>'
+            body += svg_text(x + 22, baseline - bar_height - 9, 14, f'{value / 1_000_000:.1f}', 'text-anchor="middle" font-weight="600"')
+            body += svg_text(x + 22, 242, 13, item["region"], muted + ' text-anchor="middle"')
+        return body + svg_text(26, 268, 12, "Millions · aggregated from saved notebook output", muted)
     if visual == "sql":
-        body = svg_text(26, 79, 18, "From structured data to reusable insights", 'font-weight="600"')
-        body += '<path d="M44 128v70c0 27 118 27 118 0v-70" fill="#111f37" stroke="#59d9ff" stroke-width="2"/>'
-        body += '<ellipse cx="103" cy="128" rx="59" ry="19" fill="#152b43" stroke="#59d9ff" stroke-width="2"/>'
-        body += '<path d="M44 161c0 27 118 27 118 0m-118 29c0 27 118 27 118 0" stroke="#59d9ff" stroke-width="1.5" fill="none"/>'
-        body += f'<path d="M185 172h45m-8-7 8 7-8 7" stroke="{accent}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>'
-        for index, label in enumerate(("Tables & relationships", "Views & procedures", "Analytical queries")):
-            y = 101 + index * 49
-            body += f'<rect x="252" y="{y}" width="280" height="39" rx="9" fill="#111f37" stroke="#354766"/>'
-            body += svg_text(270, y + 26, 18, label)
-        return body + svg_text(26, 268, 11, "SQL Server · relational database project", muted)
+        body = svg_text(26, 79, 18, "Customers → orders ← products", 'font-weight="600"')
+        for x, y, width, height, label, fields in (
+                (26, 110, 155, 91, "Customers", (("customer_id", "PK"),)),
+                (209, 98, 142, 130, "Orders", (("order_id", "PK"), ("customer_id", "FK"), ("product_id", "FK"))),
+                (378, 110, 155, 91, "Products", (("product_id", "PK"),))):
+            body += f'<rect x="{x}" y="{y}" width="{width}" height="{height}" rx="11" fill="#111f37" stroke="#46597b"/>'
+            body += svg_text(x + 13, y + 26, 18, label, 'font-weight="600"')
+            body += f'<path d="M{x+1} {y+38}h{width-2}" stroke="#354766"/>'
+            for offset, (field, key) in enumerate(fields):
+                field_y = y + 60 + offset * 23
+                body += svg_text(x + 13, field_y, 13, field, 'font-family="monospace"')
+                body += svg_text(x + width - 12, field_y, 10, key, f'fill="{accent}" text-anchor="end"')
+        for x in (181, 351):
+            body += f'<path d="M{x} 165h27" stroke="{accent}" stroke-width="2"/>'
+        body += svg_text(187, 156, 11, "1", muted) + svg_text(200, 156, 13, "*", muted)
+        body += svg_text(356, 156, 13, "*", muted) + svg_text(368, 156, 11, "1", muted)
+        body += svg_text(280, 251, 16, "Customer totals · date-range queries", muted + ' text-anchor="middle"')
+        return body + svg_text(26, 274, 11, "Key relationships · selected schema fields", muted)
     if visual == "adana":
         return (f'<image x="22" y="66" width="516" height="186" preserveAspectRatio="xMidYMid meet" href="{evidence["adana"]["image_data"]}"/>'
                 + svg_text(26, 268, 11, "Original monthly generation figure · 2018–2022", muted))
@@ -302,22 +320,28 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
     accent = "#59d9ff" if index % 2 else "#b995ff"
     platform = " · ".join(link["label"] for link in project["links"])
     category = presentation.get("category", "NOTEBOOK" if "votes" in project and "stars" not in project else "PROJECT")
-    label = {"Newest repository": "NEW ON GITHUB", "Most starred on GitHub": "MOST STARRED",
+    label = {"Newest repository": "LATEST REPOSITORY", "Most starred on GitHub": "MOST STARRED",
              "Most upvoted on Kaggle": "MOST UPVOTED", "Latest notebook": "LATEST NOTEBOOK",
              "Recently updated": "RECENTLY UPDATED"}[reasons[0]]
     if "Most starred on GitHub" in reasons and reasons[0] == "Newest repository":
-        label = "NEW + MOST STARRED"
+        label = "LATEST + MOST STARRED"
     body = card_art(presentation.get("visual"), evidence, accent, platform)
     description = " · ".join(reasons) + ". " + metrics(project) + ". Updated " + (project["updated_at"][:10] or "date not provided")
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="288" viewBox="0 0 560 288" role="img" aria-labelledby="title desc">
   <title id="title">{escape(project['title'])}</title>
   <desc id="desc">{escape(description)}</desc>
-  <defs><linearGradient id="accent"><stop stop-color="#32cde6"/><stop offset="1" stop-color="#a68afa"/></linearGradient></defs>
-  <rect x="1" y="1" width="558" height="286" rx="17" fill="#0a1224" stroke="#2d3b55" stroke-width="2"/>
+  <defs>
+    <linearGradient id="accent"><stop stop-color="#32cde6"/><stop offset="1" stop-color="#a68afa"/></linearGradient>
+    <radialGradient id="surface" cx="90%" cy="0%" r="100%"><stop stop-color="#1d2547"/><stop offset="1" stop-color="#0a1224"/></radialGradient>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8da4dc" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect x="1" y="1" width="558" height="286" rx="17" fill="url(#surface)" stroke="#354465" stroke-width="2"/>
+  <rect x="2" y="2" width="556" height="284" rx="16" fill="url(#grid)"/>
+  <path d="M26 2h136" stroke="url(#accent)" stroke-width="3" stroke-linecap="round"/>
   <g font-family="Arial,sans-serif" fill="#eef2ff">
     <text x="26" y="35" font-size="12" font-weight="700" letter-spacing="1.3" fill="{accent}">{escape(category)}</text>
     <text x="534" y="35" font-size="10" letter-spacing=".7" text-anchor="end" fill="#9eafca">{escape(label)}</text>
-    <path d="M26 52h508" stroke="#26334b"/>
+    <path d="M26 52h508" stroke="#354465"/>
     {body}
   </g>
 </svg>
@@ -327,7 +351,7 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
 def render_highlights(projects, highlights, presentations=None):
     presentations = presentations or {}
     lookup = {project["key"]: project for project in projects}
-    rows = ["## Project Spotlight", "", "Data analysis, SQL and applied AI — explore the code, notebooks and ideas behind my work.", "", "<table>"]
+    rows = ["## Project Spotlight", "", "From data exploration to applied AI — methods, outputs and working code.", "", "<table>"]
     for offset in range(0, len(highlights), 2):
         rows.append("  <tr>")
         for index, highlight in enumerate(highlights[offset:offset + 2], start=offset + 1):
@@ -337,7 +361,13 @@ def render_highlights(projects, highlights, presentations=None):
             rows.extend(["    <td width=\"50%\" valign=\"top\">",
                          f'      <a href="{link}"><img src="./assets/live/project-{index}.svg" width="100%" alt="{alt}" /></a>'])
             rows.append(f'      <p><a href="{link}"><strong>{escape(project["title"])}</strong></a></p>')
-            if project["description"]:
+            details = []
+            for field, label, length in (("method", "Approach", 115), ("result", "Output", 140)):
+                if project.get(field):
+                    details.append(f'<strong>{label}</strong> {escape(shorten(project[field], length))}')
+            if details:
+                rows.append("      <p>" + "<br/>".join(details) + "</p>")
+            elif project["description"]:
                 rows.append(f'      <p>{escape(shorten(project["description"], 145))}</p>')
             if project["tools"]:
                 rows.append("      <p>" + " ".join(f"<code>{escape(tool)}</code>" for tool in project["tools"][:4]) + "</p>")
@@ -357,6 +387,9 @@ def render_archive(projects):
     rows = ["## More to Explore", "", "<details>", f"<summary>Browse all {len(projects)} public projects & notebooks</summary>", "", "<ul>"]
     for project in sorted(projects, key=lambda item: (item["updated_at"], item["key"]), reverse=True):
         description = f'<br/><sub>{escape(project["description"])}</sub>' if project["description"] else ""
+        for field, label in (("method", "Approach"), ("result", "Output")):
+            if project.get(field):
+                description += f'<br/><sub>{label}: {escape(project[field])}</sub>'
         links = " · ".join(f'<a href="{escape(item["url"], quote=True)}">{escape(item["label"])}</a>' for item in project["links"])
         rows.append(f'  <li><p><strong>{escape(project["title"])}</strong> · {links}{description}<br/><sub>{escape(metrics(project))} · Updated {project["updated_at"][:10] or "date not provided"}</sub></p></li>')
     rows.extend(["</ul>", "", "</details>"])
@@ -395,7 +428,7 @@ def update(root=ROOT, fetch=fetch_json, now=None):
     lookup = {project["key"]: project for project in projects}
     presentations = config.get("presentations", {})
     evidence = {}
-    if any(presentations.get(item["key"], {}).get("visual") in ("nyc", "adana") for item in highlights):
+    if any(presentations.get(item["key"], {}).get("visual") in ("nyc", "adana", "sales") for item in highlights):
         evidence = json.loads((root / "assets/profile-project-sources.json").read_text())
     if any(presentations.get(item["key"], {}).get("visual") == "adana" for item in highlights):
         image = (root / evidence["adana"]["localFigure"]).read_bytes()

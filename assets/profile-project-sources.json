@@ -7,11 +7,26 @@
     "sourceCode": "combined.groupby('borough')['saf_s_11'].agg(np.mean)",
     "metric": "Mean student-reported safety score",
     "values": [
-      {"borough": "Bronx", "score": 6.606577},
-      {"borough": "Brooklyn", "score": 6.370755},
-      {"borough": "Manhattan", "score": 6.831370},
-      {"borough": "Queens", "score": 6.721875},
-      {"borough": "Staten Island", "score": 6.530000}
+      {
+        "borough": "Bronx",
+        "score": 6.606577
+      },
+      {
+        "borough": "Brooklyn",
+        "score": 6.370755
+      },
+      {
+        "borough": "Manhattan",
+        "score": 6.83137
+      },
+      {
+        "borough": "Queens",
+        "score": 6.721875
+      },
+      {
+        "borough": "Staten Island",
+        "score": 6.53
+      }
     ],
     "note": "Descriptive borough averages transcribed from saved notebook output. No causal claim about safety or SAT performance."
   },
@@ -24,17 +39,338 @@
   },
   "zealcat": {
     "source": "https://github.com/zealcoder95/zealcoder-portfolio/blob/main/api/chat.js",
-    "components": ["Bilingual chat interface", "Serverless API with portfolio context", "Gemini API"],
+    "components": [
+      "Bilingual chat interface",
+      "Serverless API with portfolio context",
+      "Gemini API"
+    ],
     "note": "Application integration using an external model; no claim of training a foundation model."
   },
   "adidas": {
-    "source": "https://github.com/zealcoder95/zealcoder95/blob/main/datascience_projects/Adidas%20US%20Sales%20Analysis.ipynb",
-    "dimensions": ["Retailer", "Product", "Region", "Sales channel"],
-    "note": "The compact cover summarizes analysis dimensions present in the notebook. It is a descriptive diagram, not a chart of measured sales values."
+    "project": "Adidas US Sales Analysis",
+    "source": "https://github.com/zealcoder95/zealcoder95/blob/dcc30b2a59c8a5bdc73831d0d680d3676edbf57f/datascience_projects/Adidas%20US%20Sales%20Analysis.ipynb",
+    "sourceBlobSha": "e9c185fee8c3798a7e1b1a7939b17cde681f62ab",
+    "sourceCellIndex": 26,
+    "sourceCode": "df.groupby(['Region', 'State', 'City'])['Total Sales'].sum()",
+    "aggregation": "Sum all 54 saved city-level sales totals within their five regions.",
+    "metric": "Total sales",
+    "values": [
+      {
+        "region": "Midwest",
+        "sales": 135800459
+      },
+      {
+        "region": "Northeast",
+        "sales": 186324067
+      },
+      {
+        "region": "South",
+        "sales": 144663181
+      },
+      {
+        "region": "Southeast",
+        "sales": 163171236
+      },
+      {
+        "region": "West",
+        "sales": 269943182
+      }
+    ],
+    "cityTotals": [
+      {
+        "region": "Midwest",
+        "location": "Illinois Chicago",
+        "sales": 9797488
+      },
+      {
+        "region": "Midwest",
+        "location": "Indiana Indianapolis",
+        "sales": 8836198
+      },
+      {
+        "region": "Midwest",
+        "location": "Iowa Des Moines",
+        "sales": 7424011
+      },
+      {
+        "region": "Midwest",
+        "location": "Kansas Wichita",
+        "sales": 9972864
+      },
+      {
+        "region": "Midwest",
+        "location": "Michigan Detroit",
+        "sales": 18625433
+      },
+      {
+        "region": "Midwest",
+        "location": "Minnesota Minneapolis",
+        "sales": 7378068
+      },
+      {
+        "region": "Midwest",
+        "location": "Missouri St. Louis",
+        "sales": 9683265
+      },
+      {
+        "region": "Midwest",
+        "location": "Montana Billings",
+        "sales": 15710886
+      },
+      {
+        "region": "Midwest",
+        "location": "Nebraska Omaha",
+        "sales": 5929038
+      },
+      {
+        "region": "Midwest",
+        "location": "North Dakota Fargo",
+        "sales": 7735580
+      },
+      {
+        "region": "Midwest",
+        "location": "Ohio Columbus",
+        "sales": 18484583
+      },
+      {
+        "region": "Midwest",
+        "location": "South Dakota Sioux Falls",
+        "sales": 8495576
+      },
+      {
+        "region": "Midwest",
+        "location": "Wisconsin Milwaukee",
+        "sales": 7727469
+      },
+      {
+        "region": "Northeast",
+        "location": "Connecticut Hartford",
+        "sales": 11573448
+      },
+      {
+        "region": "Northeast",
+        "location": "Delaware Wilmington",
+        "sales": 12298412
+      },
+      {
+        "region": "Northeast",
+        "location": "Maine Portland",
+        "sales": 9195978
+      },
+      {
+        "region": "Northeast",
+        "location": "Maryland Baltimore",
+        "sales": 7758059
+      },
+      {
+        "region": "Northeast",
+        "location": "Massachusetts Boston",
+        "sales": 11076810
+      },
+      {
+        "region": "Northeast",
+        "location": "New Hampshire Manchester",
+        "sales": 16411667
+      },
+      {
+        "region": "Northeast",
+        "location": "New Jersey Newark",
+        "sales": 9934246
+      },
+      {
+        "region": "Northeast",
+        "location": "New York Albany",
+        "sales": 24427804
+      },
+      {
+        "region": "Northeast",
+        "location": "New York",
+        "sales": 39801235
+      },
+      {
+        "region": "Northeast",
+        "location": "Pennsylvania Philadelphia",
+        "sales": 10357519
+      },
+      {
+        "region": "Northeast",
+        "location": "Rhode Island Providence",
+        "sales": 8446806
+      },
+      {
+        "region": "Northeast",
+        "location": "Vermont Burlington",
+        "sales": 14352923
+      },
+      {
+        "region": "Northeast",
+        "location": "West Virginia Charleston",
+        "sales": 10689160
+      },
+      {
+        "region": "South",
+        "location": "Alabama Birmingham",
+        "sales": 17633424
+      },
+      {
+        "region": "South",
+        "location": "Arkansas Little Rock",
+        "sales": 12639347
+      },
+      {
+        "region": "South",
+        "location": "Louisiana New Orleans",
+        "sales": 23750781
+      },
+      {
+        "region": "South",
+        "location": "Mississippi Jackson",
+        "sales": 15591709
+      },
+      {
+        "region": "South",
+        "location": "Oklahoma Oklahoma City",
+        "sales": 10620734
+      },
+      {
+        "region": "South",
+        "location": "Tennessee Knoxville",
+        "sales": 18067440
+      },
+      {
+        "region": "South",
+        "location": "Texas Dallas",
+        "sales": 20902864
+      },
+      {
+        "region": "South",
+        "location": "Houston",
+        "sales": 25456882
+      },
+      {
+        "region": "Southeast",
+        "location": "Florida Miami",
+        "sales": 31600863
+      },
+      {
+        "region": "Southeast",
+        "location": "Orlando",
+        "sales": 27682851
+      },
+      {
+        "region": "Southeast",
+        "location": "Georgia Atlanta",
+        "sales": 18997466
+      },
+      {
+        "region": "Southeast",
+        "location": "Kentucky Louisville",
+        "sales": 10072848
+      },
+      {
+        "region": "Southeast",
+        "location": "North Carolina Charlotte",
+        "sales": 23956531
+      },
+      {
+        "region": "Southeast",
+        "location": "South Carolina Charleston",
+        "sales": 29285637
+      },
+      {
+        "region": "Southeast",
+        "location": "Virginia Richmond",
+        "sales": 21575040
+      },
+      {
+        "region": "West",
+        "location": "Alaska Anchorage",
+        "sales": 14753103
+      },
+      {
+        "region": "West",
+        "location": "Arizona Phoenix",
+        "sales": 15782221
+      },
+      {
+        "region": "West",
+        "location": "California Los Angeles",
+        "sales": 25634913
+      },
+      {
+        "region": "West",
+        "location": "San Francisco",
+        "sales": 34539220
+      },
+      {
+        "region": "West",
+        "location": "Colorado Denver",
+        "sales": 20996536
+      },
+      {
+        "region": "West",
+        "location": "Hawaii Honolulu",
+        "sales": 22282457
+      },
+      {
+        "region": "West",
+        "location": "Idaho Boise",
+        "sales": 19276878
+      },
+      {
+        "region": "West",
+        "location": "Nevada Las Vegas",
+        "sales": 20858509
+      },
+      {
+        "region": "West",
+        "location": "New Mexico Albuquerque",
+        "sales": 19865016
+      },
+      {
+        "region": "West",
+        "location": "Oregon Portland",
+        "sales": 21349674
+      },
+      {
+        "region": "West",
+        "location": "Utah Salt Lake City",
+        "sales": 9696420
+      },
+      {
+        "region": "West",
+        "location": "Washington Seattle",
+        "sales": 26330718
+      },
+      {
+        "region": "West",
+        "location": "Wyoming Cheyenne",
+        "sales": 18577517
+      }
+    ],
+    "note": "Exact totals aggregated from the notebook's saved textual output. Bar labels use millions and one decimal place; no estimated image values or invented series."
   },
   "sql": {
     "source": "https://github.com/zealcoder95/ecommerce-sql-project/blob/main/README.md",
-    "components": ["Tables and relationships", "Views and stored procedures", "Analytical queries"],
-    "note": "The compact cover summarizes documented database components; it is not an exact schema diagram or a performance benchmark."
+    "tables": {
+      "Customers": {
+        "primaryKey": "customer_id"
+      },
+      "Orders": {
+        "primaryKey": "order_id",
+        "foreignKeys": {
+          "customer_id": "Customers.customer_id",
+          "product_id": "Products.product_id"
+        }
+      },
+      "Products": {
+        "primaryKey": "product_id"
+      }
+    },
+    "outputs": [
+      "CustomerTotalOrders view",
+      "GetOrdersByDateRange stored procedure"
+    ],
+    "note": "Selected key relationships documented in the project README, not the full schema or a performance benchmark."
   }
 }
