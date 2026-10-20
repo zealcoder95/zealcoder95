@@ -1,89 +1,99 @@
 <p align="center">
-  <img src="./assets/zealcoder-banner.png" width="100%" alt="zealcoder — Gizem Gülcü | Data, AI and Engineering" />
-</p>
-
-<h3 align="center">Data Scientist • Electrical & Electronics Engineer • AI Builder</h3>
-
-<p align="center">
-  I turn data, engineering thinking and machine learning into clear, useful products.<br/>
-  Currently building <strong>ZealCat</strong>, my AI-powered portfolio companion.
+  <img src="./assets/zealcoder-banner-v2.webp" width="100%" alt="zealcoder / Gizem Gülcü — Data Science & Artificial Intelligence" />
 </p>
 
 <p align="center">
-  <a href="https://zealcoder-portfolio.vercel.app/"><img alt="Portfolio" src="https://img.shields.io/badge/Portfolio-22D3EE?style=for-the-badge&logo=vercel&logoColor=07111F" /></a>
-  <a href="https://www.linkedin.com/in/gizemgulcu/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-6366F1?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  <a href="https://www.kaggle.com/gizemglc"><img alt="Kaggle" src="https://img.shields.io/badge/Kaggle-A855F7?style=for-the-badge&logo=kaggle&logoColor=white" /></a>
+  <strong>Data Science · Machine Learning · Applied AI</strong><br/>
+  Electrical & Electronics Engineer exploring data, predictive models and useful AI applications.
 </p>
 
 <p align="center">
-  <img src="./assets/neon-divider.png" width="100%" alt="" />
+  <a href="https://zealcoder-portfolio.vercel.app/"><img alt="Explore my portfolio" src="./assets/badges/portfolio.svg" /></a>
+  <a href="https://www.kaggle.com/gizemglc"><img alt="View my Kaggle notebooks" src="./assets/badges/kaggle.svg" /></a>
+  <a href="https://www.linkedin.com/in/gizemgulcu/"><img alt="Connect on LinkedIn" src="./assets/badges/linkedin.svg" /></a>
 </p>
-
-### What I build
-
-| | |
-|---|---|
-| **◆ Data products**<br/>Analysis that ends with a decision, not just a chart. | **◇ Machine learning**<br/>Reproducible workflows with clear evaluation. |
-| **✦ AI experiences**<br/>Approachable interfaces that make intelligent systems useful. | **⬡ Engineering solutions**<br/>Structured problem solving shaped by my EEE background. |
-
-> Open to **Junior Data Scientist** and **Machine Learning Engineer** opportunities.
 
 <p align="center">
-  <img src="./assets/neon-divider.png" width="100%" alt="" />
+  Open to <strong>Junior Data Scientist</strong> and <strong>Machine Learning Engineer</strong> opportunities.
 </p>
 
-### Featured work
+## Selected Data Science Projects
 
-| Project | Focus and outcome | Stack | Explore |
-|---|---|---|---|
-| **ZealCat AI Portfolio** | Context-aware AI companion, polished web experience and personal product design | JavaScript · HTML · CSS · Vercel | [Repository](https://github.com/zealcoder95/zealcoder-portfolio) · [Live](https://zealcoder-portfolio.vercel.app/) |
-| **E-commerce SQL Analytics** | Business-focused querying and structured analysis of commerce data | T-SQL · SQL analytics | [Repository](https://github.com/zealcoder95/ecommerce-sql-project) |
-| **NYC High School Data** | Data cleaning, exploratory analysis and communicating relationships in education data | Python · Pandas · Jupyter | [Repository](https://github.com/zealcoder95/Analyzing-NYC-High-School-Data) |
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data">
+        <img src="./assets/project-nyc.png" width="100%" alt="NYC School Insights: student-reported safety averages across five boroughs, redrawn from the analysis notebook" />
+      </a>
+      <p><strong>NYC High School Data</strong></p>
+      <p>Exploring relationships between <strong>SAT performance, school surveys and property prices</strong> across New York City.</p>
+      <p><code>Python</code> <code>Pandas</code> <code>Seaborn</code> <code>EDA</code></p>
+      <p><a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data"><strong>Explore the analysis →</strong></a></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana">
+        <img src="./assets/project-adana.png" width="100%" alt="Adana Energy and Climate: original monthly fossil and renewable electricity generation chart from the portfolio case study, 2018 to 2022" />
+      </a>
+      <p><strong>Adana Energy & Climate</strong></p>
+      <p>Investigating <strong>energy generation, seasonality and renewable energy</strong> through a local sustainability case study.</p>
+      <p><code>Python</code> <code>Pandas</code> <code>Time Series</code></p>
+      <p><a href="https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana"><strong>Read the case study →</strong></a></p>
+    </td>
+  </tr>
+</table>
 
-<details>
-<summary><strong>More data projects and case studies</strong></summary>
-<br/>
+## Applied AI · ZealCat
+
+<a href="https://github.com/zealcoder95/zealcoder-portfolio">
+  <img src="./assets/project-zealcat.png" width="100%" alt="ZealCat AI Portfolio: a bilingual chat interface connects to a serverless API that supplies portfolio context and conversation history to Gemini" />
+</a>
+
+A personal portfolio with a **TR/EN AI companion**, portfolio-aware responses and a serverless chat endpoint. An applied AI project bringing together interaction design, context and model integration.
+
+<p><code>JavaScript</code> <code>HTML / CSS</code> <code>Gemini API</code> <code>Vercel</code></p>
+
+**[Try ZealCat ↗](https://zealcoder-portfolio.vercel.app/)** · [Explore the repository](https://github.com/zealcoder95/zealcoder-portfolio)
+
+## Technical Toolkit
+
+**Data & analytics**
+
+<p>
+  <img src="./assets/badges/python.svg" alt="Python" />
+  <img src="./assets/badges/sql.svg" alt="SQL" />
+  <img src="./assets/badges/pandas.svg" alt="Pandas" />
+  <img src="./assets/badges/numpy.svg" alt="NumPy" />
+  <img src="./assets/badges/matplotlib.svg" alt="Matplotlib" />
+  <img src="./assets/badges/seaborn.svg" alt="Seaborn" />
+  <img src="./assets/badges/power-bi.svg" alt="Power BI" />
+</p>
+
+**Machine learning**
+
+<p>
+  <img src="./assets/badges/scikit-learn.svg" alt="scikit-learn" />
+  <img src="./assets/badges/tensorflow.svg" alt="TensorFlow" />
+</p>
+
+**Engineering & delivery**
+
+<p>
+  <img src="./assets/badges/git.svg" alt="Git" />
+  <img src="./assets/badges/javascript.svg" alt="JavaScript" />
+  <img src="./assets/badges/vercel.svg" alt="Vercel" />
+</p>
+
+## More Work
 
 | Project | Focus | Explore |
 |---|---|---|
-| **Adana Energy & Climate** | Energy generation, emissions, seasonality and forecasting | [Kaggle](https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana) |
-| **Adidas US Sales Analysis** | Sales trends, product performance and regional insights | [Kaggle](https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis) |
-| **Employee Exit Surveys** | Data cleaning and analysis of employee dissatisfaction | [Kaggle](https://www.kaggle.com/code/gizemglc/clean-and-analyze-employee-exit-surveys-1-1) |
-| **Kaggle Notebooks** | Complete collection of applied data projects | [View all](https://www.kaggle.com/gizemglc/code) |
-
-</details>
+| **E-commerce SQL** | Relational database design, views, stored procedures and analytical queries | [GitHub ↗](https://github.com/zealcoder95/ecommerce-sql-project) |
+| **Adidas US Sales** | Regional sales patterns, product performance and visual analysis | [Kaggle ↗](https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis) |
+| **Employee Exit Surveys** | Cleaning and combining survey data to explore employee dissatisfaction | [Kaggle ↗](https://www.kaggle.com/code/gizemglc/clean-and-analyze-employee-exit-surveys-1-1) |
 
 <p align="center">
-  <img src="./assets/neon-divider.png" width="100%" alt="" />
-</p>
-
-### Core toolkit
-
-<p>
-  <img src="https://img.shields.io/badge/Python-0B1024?style=flat-square&logo=python&logoColor=22D3EE" alt="Python" />
-  <img src="https://img.shields.io/badge/SQL-0B1024?style=flat-square&logo=postgresql&logoColor=22D3EE" alt="SQL" />
-  <img src="https://img.shields.io/badge/Pandas-0B1024?style=flat-square&logo=pandas&logoColor=A855F7" alt="Pandas" />
-  <img src="https://img.shields.io/badge/scikit--learn-0B1024?style=flat-square&logo=scikitlearn&logoColor=F59E0B" alt="scikit-learn" />
-  <img src="https://img.shields.io/badge/TensorFlow-0B1024?style=flat-square&logo=tensorflow&logoColor=F97316" alt="TensorFlow" />
-  <img src="https://img.shields.io/badge/Power_BI-0B1024?style=flat-square&logo=powerbi&logoColor=FACC15" alt="Power BI" />
-  <img src="https://img.shields.io/badge/Git-0B1024?style=flat-square&logo=git&logoColor=F97316" alt="Git" />
-</p>
-
-<p align="center">
-  <img src="./assets/neon-divider.png" width="100%" alt="" />
-</p>
-
-### GitHub activity
-
-<p align="center">
-  <img src="./assets/github-activity-card.png" width="100%" alt="GitHub activity — contributions, public repositories and followers" />
-</p>
-
-<p align="center">
-  <img src="./assets/neon-divider.png" width="100%" alt="" />
-</p>
-
-<p align="center">
-  <strong>Adana, Türkiye</strong> · Building at the intersection of data, AI and engineering.<br/>
-  <sub>Explore the work, test ZealCat, or connect with me on LinkedIn.</sub>
+  <strong>Adana, Türkiye</strong> · Data Science & Applied AI.<br/>
+  <a href="https://github.com/zealcoder95?tab=overview">GitHub activity</a> ·
+  <a href="https://www.kaggle.com/gizemglc/code">All notebooks</a> ·
+  <a href="https://www.linkedin.com/in/gizemgulcu/">Let's connect</a>
 </p>

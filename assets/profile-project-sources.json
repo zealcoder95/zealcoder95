@@ -1,0 +1,30 @@
+{
+  "nyc": {
+    "project": "Analyzing NYC High School Data",
+    "source": "https://github.com/zealcoder95/Analyzing-NYC-High-School-Data/blob/main/Analyzing%20NYC%20High%20School%20Data.ipynb",
+    "retrievedAt": "2026-10-19",
+    "sourceBlobSha": "d415f304135d3c73b7302f1320f003a656e32b73",
+    "sourceCode": "combined.groupby('borough')['saf_s_11'].agg(np.mean)",
+    "metric": "Mean student-reported safety score",
+    "values": [
+      {"borough": "Bronx", "score": 6.606577},
+      {"borough": "Brooklyn", "score": 6.370755},
+      {"borough": "Manhattan", "score": 6.831370},
+      {"borough": "Queens", "score": 6.721875},
+      {"borough": "Staten Island", "score": 6.530000}
+    ],
+    "note": "Descriptive borough averages transcribed from saved notebook output. No causal claim about safety or SAT performance."
+  },
+  "adana": {
+    "project": "Climate Change & Renewable Energy in Adana",
+    "source": "https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana",
+    "originalFigure": "https://github.com/zealcoder95/zealcoder-portfolio/blob/c5e81b2dca5404abc8b37d801ab6317efc5ef522/assets/projects/adana-energy-trend.png",
+    "localFigure": "assets/profile-source/adana-energy-trend.png",
+    "note": "The existing portfolio figure is reproduced in full, with its original title, axes, legend and values intact."
+  },
+  "zealcat": {
+    "source": "https://github.com/zealcoder95/zealcoder-portfolio/blob/main/api/chat.js",
+    "components": ["Bilingual chat interface", "Serverless API with portfolio context", "Gemini API"],
+    "note": "Application integration using an external model; no claim of training a foundation model."
+  }
+}
