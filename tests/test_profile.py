@@ -195,6 +195,21 @@ class ProfileTests(unittest.TestCase):
         self.assertIn('href="https://example.org/demo">Try the app', html)
         self.assertIn('href="https://github.com/tester/project"', html)
 
+    def test_focus_links_use_existing_projects_and_skip_visible_or_hidden_work(self):
+        projects = profile.build_projects(sources([repo(1, "featured"), repo(2, "fraud-model")]), CONFIG)
+        selected = [{"key": "github:1", "reasons": ["Newest repository"]}]
+        focus = [{"key": "github:1", "label": "Already visible"},
+                 {"key": "github:2", "label": 'ML & <script>unsafe</script>'}]
+        html = profile.render_highlights(projects, selected, focus_links=focus)
+        self.assertIn("ML &amp; forecasting", html)
+        self.assertIn('href="https://github.com/tester/fraud-model"', html)
+        self.assertIn("ML &amp; &lt;script&gt;unsafe&lt;/script&gt;", html)
+        self.assertNotIn("Already visible", html)
+        self.assertNotIn("<script>", html)
+        removed = profile.render_highlights(projects, selected, focus_links=[{"key": "github:99"}])
+        self.assertNotIn("ML &amp; forecasting", removed)
+        self.assertNotIn("github:99", removed)
+
     def test_catalog_approach_and_output_follow_cross_platform_aliases(self):
         config = dict(CONFIG, aliases={"https://www.kaggle.com/code/tester/analysis": "https://github.com/tester/project"})
         catalog = [{"link": "https://www.kaggle.com/code/tester/analysis", "title": {"en": "Analysis"},

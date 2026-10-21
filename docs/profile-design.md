@@ -9,7 +9,7 @@ The existing ZealCat banner and cyan–violet identity remain the visual anchor.
 - [NirDiamant](https://github.com/NirDiamant): clear reading order, strong action links and controlled visual hierarchy.
 - [eugeneyan](https://github.com/eugeneyan): short practical ML positioning and automatically refreshed recent work.
 
-Reviewed on 2026-10-20. These references informed presentation principles. Their artwork, wording, code, metrics and credentials were not copied.
+Reviewed on 2026-10-20; visual comparison repeated on 2026-10-21. These references informed presentation principles. Their artwork, wording, code, metrics and credentials were not copied.
 
 ## Applied to this profile
 
@@ -21,5 +21,8 @@ Reviewed on 2026-10-20. These references informed presentation principles. Their
 - Group the existing toolkit by data/analytics, machine learning, and applied AI/delivery. The Gemini API badge describes the existing integration.
 - Use relative labels such as Latest repository rather than suggesting a three-month-old repository was just created.
 - Keep new repositories discoverable automatically. A known project keeps its own cover after ranking changes; an unknown project gets a neutral cover and its real description.
+- Give each cover a small original domain symbol and a discreet zealcoder signature. Use larger chart labels, clearer source captions and stable domain accents so the design stays recognizable after ranking changes.
+- Use compact toolkit badges that wrap naturally, avoiding an isolated badge on a second line at the standard desktop profile width.
+- Surface the existing fraud-detection and energy-forecasting notebooks in a compact ML & forecasting row. Omit a focus link when that project is already one of the four cards or is no longer eligible.
 
 No invented accuracy scores, usage metrics, seniority claims or model-training claims are part of the presentation. Data relationships are descriptive; they do not assert causality.

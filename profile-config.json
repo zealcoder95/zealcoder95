@@ -5,6 +5,10 @@
     "zealcoder95"
   ],
   "hide_topic": "hide-from-profile",
+  "focus_links": [
+    {"key": "kaggle:gizemglc/credit-card-fraud-detection-using-ml", "label": "Fraud detection"},
+    {"key": "kaggle:gizemglc/global-climate-change-renewable-energy-in-adana", "label": "Energy forecasting"}
+  ],
   "catalog_url": "https://raw.githubusercontent.com/zealcoder95/zealcoder-portfolio/main/assets/projects.json",
   "kaggle_url": "https://raw.githubusercontent.com/zealcoder95/zealcoder-portfolio/main/assets/kaggle-feed.json",
   "aliases": {

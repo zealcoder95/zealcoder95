@@ -56,6 +56,8 @@ From data exploration to applied AI — methods, outputs and working code.
     </td>
   </tr>
 </table>
+
+<p><strong>ML &amp; forecasting</strong> · <a href="https://www.kaggle.com/code/gizemglc/credit-card-fraud-detection-using-ml">Fraud detection ↗</a> · <a href="https://www.kaggle.com/code/gizemglc/global-climate-change-renewable-energy-in-adana">Energy forecasting ↗</a></p>
 <!-- PROFILE:HIGHLIGHTS:END -->
 
 ## Tools I Work With
@@ -63,29 +65,29 @@ From data exploration to applied AI — methods, outputs and working code.
 **Data & analytics**
 
 <p>
-  <img src="./assets/badges/python.svg" alt="Python" />
-  <img src="./assets/badges/sql.svg" alt="SQL" />
-  <img src="./assets/badges/pandas.svg" alt="Pandas" />
-  <img src="./assets/badges/numpy.svg" alt="NumPy" />
-  <img src="./assets/badges/matplotlib.svg" alt="Matplotlib" />
-  <img src="./assets/badges/seaborn.svg" alt="Seaborn" />
-  <img src="./assets/badges/power-bi.svg" alt="Power BI" />
+  <img src="./assets/badges/python.svg" alt="Python" height="28" />
+  <img src="./assets/badges/sql.svg" alt="SQL" height="28" />
+  <img src="./assets/badges/pandas.svg" alt="Pandas" height="28" />
+  <img src="./assets/badges/numpy.svg" alt="NumPy" height="28" />
+  <img src="./assets/badges/matplotlib.svg" alt="Matplotlib" height="28" />
+  <img src="./assets/badges/seaborn.svg" alt="Seaborn" height="28" />
+  <img src="./assets/badges/power-bi.svg" alt="Power BI" height="28" />
 </p>
 
 **Machine learning**
 
 <p>
-  <img src="./assets/badges/scikit-learn.svg" alt="scikit-learn" />
-  <img src="./assets/badges/tensorflow.svg" alt="TensorFlow" />
+  <img src="./assets/badges/scikit-learn.svg" alt="scikit-learn" height="28" />
+  <img src="./assets/badges/tensorflow.svg" alt="TensorFlow" height="28" />
 </p>
 
 **Applied AI & delivery**
 
 <p>
-  <img src="./assets/badges/gemini-api.svg" alt="Gemini API" />
-  <img src="./assets/badges/git.svg" alt="Git" />
-  <img src="./assets/badges/javascript.svg" alt="JavaScript" />
-  <img src="./assets/badges/vercel.svg" alt="Vercel" />
+  <img src="./assets/badges/gemini-api.svg" alt="Gemini API" height="28" />
+  <img src="./assets/badges/git.svg" alt="Git" height="28" />
+  <img src="./assets/badges/javascript.svg" alt="JavaScript" height="28" />
+  <img src="./assets/badges/vercel.svg" alt="Vercel" height="28" />
 </p>
 
 <!-- PROFILE:ARCHIVE:START -->
