@@ -8,6 +8,7 @@ The `Refresh profile` GitHub Actions workflow checks public project metadata eve
 - Kaggle notebook titles, upvotes and last-run dates from the portfolio's existing daily `assets/kaggle-feed.json`.
 - Project titles, descriptions, tools, methods and outputs from the portfolio's `assets/projects.json` catalog. English `method` and `result` fields become Approach and Output lines in a card and remain fully readable in the collapsed archive.
 - One homepage showcase with up to four projects, plus a collapsed archive of all eligible projects. Each project appears once in the visible showcase.
+- A matching overview strip with the number of unique public projects, Kaggle notebooks and GitHub repositories. Platform totals can overlap when a project is cross-posted; the unique project count uses the existing alias merge.
 
 Highlights prioritize the newest GitHub repository, most-starred GitHub project, most-upvoted Kaggle notebook and latest Kaggle notebook. A project can qualify for multiple labels but appears only once. Remaining slots show recently updated projects. Zero-star or zero-upvote projects are never labeled most popular. GitHub stars and Kaggle upvotes are ranked separately. Up to two optional `focus_links` expose additional ML/forecasting notebooks as a compact text row; they resolve against eligible project keys and are omitted when already featured or unavailable.
 
@@ -17,7 +18,7 @@ Known projects use consistent SVG covers with a subtle grid and the original cya
 
 ## Configuration
 
-Edit `profile-config.json` to change the owner, public catalog/feed URLs, fallback descriptions or exclusions. `fallbacks` can provide verified `method` and `result` text for repositories without catalog entries. A project without these fields keeps its description; new repositories do not need them to appear. `presentations` optionally maps stable project keys to a cover style, category and HTTPS live-demo link; it is not required for new projects to appear. Add the topic `hide-from-profile` to hide a repository. Forks, private, archived and disabled repositories, and this profile repository itself, are excluded. `aliases` maps a Kaggle URL to an equivalent GitHub URL to avoid duplicates. Keep the two `PROFILE:HIGHLIGHTS` and two `PROFILE:ARCHIVE` comment markers in `README.md`; only their contents are regenerated.
+Edit `profile-config.json` to change the owner, public catalog/feed URLs, fallback descriptions or exclusions. `fallbacks` can provide verified `method` and `result` text for repositories without catalog entries. A project without these fields keeps its description; new repositories do not need them to appear. `presentations` optionally maps stable project keys to a cover style, category, short `cover_title` and HTTPS live-demo link; it is not required for new projects to appear. Add the topic `hide-from-profile` to hide a repository. Forks, private, archived and disabled repositories, and this profile repository itself, are excluded. `aliases` maps a Kaggle URL to an equivalent GitHub URL to avoid duplicates. Keep the two `PROFILE:HIGHLIGHTS` and two `PROFILE:ARCHIVE` comment markers in `README.md`; only their contents are regenerated.
 
 Run locally with Python 3.10+:
 

@@ -11,12 +11,16 @@
   <a href="https://zealcoder-portfolio.vercel.app/"><img alt="Explore my portfolio" src="./assets/badges/portfolio.svg" /></a>
   <a href="https://www.kaggle.com/gizemglc"><img alt="View my Kaggle notebooks" src="./assets/badges/kaggle.svg" /></a>
   <a href="https://www.linkedin.com/in/gizemgulcu/"><img alt="Connect on LinkedIn" src="./assets/badges/linkedin.svg" /></a>
+  <br/>
+  <sub><a href="#project-spotlight">Selected work</a> · <a href="#tools-i-work-with">Toolkit</a> · <a href="#more-to-explore">All projects</a></sub>
 </p>
 
 <!-- PROFILE:HIGHLIGHTS:START -->
 ## Project Spotlight
 
 From data exploration to applied AI — methods, outputs and working code.
+
+<p><img src="./assets/live/overview.svg" width="100%" alt="14 unique public projects; 11 Kaggle notebooks; 4 GitHub repositories. Linked versions count as one project." /></p>
 
 <table>
   <tr>
@@ -94,7 +98,7 @@ From data exploration to applied AI — methods, outputs and working code.
 ## More to Explore
 
 <details>
-<summary>Browse all 14 public projects & notebooks</summary>
+<summary><strong>Browse all 14 public projects & notebooks</strong></summary>
 
 <ul>
   <li><p><strong>ZealCat · AI Portfolio</strong> · <a href="https://github.com/zealcoder95/zealcoder-portfolio">GitHub</a><br/><sub>A bilingual portfolio with a context-aware AI companion and a serverless Gemini integration.</sub><br/><sub>Approach: Serverless Gemini API with portfolio context and conversation history.</sub><br/><sub>Output: A bilingual AI companion visitors can try in the live portfolio.</sub><br/><sub>1 GitHub star · Updated 2026-10-21</sub></p></li>

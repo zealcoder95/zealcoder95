@@ -17,24 +17,29 @@
   "presentations": {
     "github:1296154770": {
       "category": "APPLIED AI",
+      "cover_title": "ZealCat · AI Portfolio",
       "visual": "ai",
       "demo_url": "https://zealcoder-portfolio.vercel.app/",
       "demo_label": "Try ZealCat"
     },
     "github:856277032": {
       "category": "DATA SCIENCE",
+      "cover_title": "NYC · School Insights",
       "visual": "nyc"
     },
     "github:878638181": {
       "category": "SQL & ANALYTICS",
+      "cover_title": "E-commerce · SQL",
       "visual": "sql"
     },
     "kaggle:gizemglc/adidas-us-sales-analysis": {
       "category": "BUSINESS ANALYTICS",
+      "cover_title": "Adidas · US Sales",
       "visual": "sales"
     },
     "kaggle:gizemglc/global-climate-change-renewable-energy-in-adana": {
       "category": "ENERGY & TIME SERIES",
+      "cover_title": "Adana · Energy & Climate",
       "visual": "adana"
     }
   },

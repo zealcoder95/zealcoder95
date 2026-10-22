@@ -72,6 +72,19 @@ class ProfileTests(unittest.TestCase):
         self.assertIn("Most starred on GitHub", selected[0]["reasons"])
         self.assertIn("Most upvoted on Kaggle", selected[1]["reasons"])
 
+    def test_overview_counts_cross_posted_work_once_and_updates_with_new_projects(self):
+        config = dict(CONFIG, aliases={"https://www.kaggle.com/code/tester/analysis": "https://github.com/tester/project"})
+        projects = profile.build_projects(sources([repo()], [notebook(), notebook("fraud")]), config)
+        self.assertEqual(profile.project_counts(projects), {"projects": 2, "notebooks": 2, "repositories": 1})
+        overview = profile.render_overview(projects)
+        ET.fromstring(overview)
+        self.assertIn("2 unique public projects", overview)
+        self.assertIn("2 Kaggle notebooks", overview)
+        self.assertIn("1 GitHub repository", overview)
+        expanded = profile.build_projects(sources([repo(), repo(2, "new-work")], [notebook(), notebook("fraud")]), config)
+        self.assertEqual(profile.project_counts(expanded), {"projects": 3, "notebooks": 2, "repositories": 2})
+        self.assertNotEqual(profile.render_overview(expanded), overview)
+
     def test_catalog_and_fresh_description_language_propagate(self):
         catalog = [{"link": "https://github.com/tester/project", "title": {"en": "Updated title"},
                     "desc": {"en": "Catalog description"}, "tools": ["Pandas"]}]

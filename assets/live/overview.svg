@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="112" viewBox="0 0 1120 112" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio at a glance</title>
+  <desc id="desc">14 unique public projects; 11 Kaggle notebooks; 4 GitHub repositories. Linked versions count as one project.</desc>
+  <defs><linearGradient id="surface"><stop stop-color="#0c1930"/><stop offset=".5" stop-color="#1b2141"/><stop offset="1" stop-color="#0d1930"/></linearGradient><linearGradient id="edge"><stop stop-color="#32cde6"/><stop offset="1" stop-color="#a68afa"/></linearGradient></defs>
+  <rect x="1" y="1" width="1118" height="110" rx="15" fill="url(#surface)" stroke="#354465" stroke-width="2"/>
+  <path d="M26 2h1068" stroke="url(#edge)" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" fill="#eef2ff"><text x="28" y="73" font-size="44" fill="#59d9ff" font-weight="700">14</text><text x="110" y="48" font-size="15" font-weight="700" letter-spacing=".8">PUBLIC PROJECTS</text><text x="110" y="74" font-size="14" fill="#a9bad5">Linked work counted once</text><text x="401" y="73" font-size="44" fill="#b995ff" font-weight="700">11</text><text x="483" y="48" font-size="15" font-weight="700" letter-spacing=".8">KAGGLE NOTEBOOKS</text><text x="483" y="74" font-size="14" fill="#a9bad5">Data, methods &amp; findings</text><path d="M387 25v62" stroke="#354465"/><text x="774" y="73" font-size="44" fill="#59d9ff" font-weight="700">04</text><text x="856" y="48" font-size="15" font-weight="700" letter-spacing=".8">GITHUB REPOS</text><text x="856" y="74" font-size="14" fill="#a9bad5">Code &amp; applications</text><path d="M760 25v62" stroke="#354465"/></g>
+</svg>

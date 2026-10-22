@@ -246,6 +246,44 @@ def svg_text(x, y, size, value, extra=""):
     return f'<text x="{x}" y="{y}" font-size="{size}" {extra}>{escape(str(value))}</text>'
 
 
+def project_counts(projects):
+    """Platform totals overlap when one project is published on both platforms."""
+    return {"projects": len(projects), "notebooks": sum("votes" in item for item in projects),
+            "repositories": sum("stars" in item for item in projects)}
+
+
+def overview_description(projects):
+    counts = project_counts(projects)
+    total = f'{counts["projects"]} unique public ' + ("project" if counts["projects"] == 1 else "projects")
+    notebooks = f'{counts["notebooks"]} Kaggle ' + ("notebook" if counts["notebooks"] == 1 else "notebooks")
+    repositories = f'{counts["repositories"]} GitHub ' + ("repository" if counts["repositories"] == 1 else "repositories")
+    return total + "; " + notebooks + "; " + repositories + ". Linked versions count as one project."
+
+
+def render_overview(projects):
+    counts = project_counts(projects)
+    body = ""
+    for index, (key, label, note, accent) in enumerate((
+            ("projects", "PUBLIC PROJECTS", "Linked work counted once", "#59d9ff"),
+            ("notebooks", "KAGGLE NOTEBOOKS", "Data, methods & findings", "#b995ff"),
+            ("repositories", "GITHUB REPOS", "Code & applications", "#59d9ff"))):
+        x = 28 + index * 373
+        body += svg_text(x, 73, 44, str(counts[key]).zfill(2), f'fill="{accent}" font-weight="700"')
+        body += svg_text(x + 82, 48, 15, label, 'font-weight="700" letter-spacing=".8"')
+        body += svg_text(x + 82, 74, 14, note, 'fill="#a9bad5"')
+        if index:
+            body += f'<path d="M{x-14} 25v62" stroke="#354465"/>'
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="112" viewBox="0 0 1120 112" role="img" aria-labelledby="title desc">
+  <title id="title">Portfolio at a glance</title>
+  <desc id="desc">{escape(overview_description(projects))}</desc>
+  <defs><linearGradient id="surface"><stop stop-color="#0c1930"/><stop offset=".5" stop-color="#1b2141"/><stop offset="1" stop-color="#0d1930"/></linearGradient><linearGradient id="edge"><stop stop-color="#32cde6"/><stop offset="1" stop-color="#a68afa"/></linearGradient></defs>
+  <rect x="1" y="1" width="1118" height="110" rx="15" fill="url(#surface)" stroke="#354465" stroke-width="2"/>
+  <path d="M26 2h1068" stroke="url(#edge)" stroke-width="2"/>
+  <g font-family="Arial,sans-serif" fill="#eef2ff">{body}</g>
+</svg>
+'''
+
+
 def card_mark(visual, accent):
     """Small original line symbols, consistent with the profile badge system."""
     paths = {
@@ -264,7 +302,7 @@ def card_art(visual, evidence, accent, platform):
     """Real chart data or descriptive project diagrams; never invented chart values."""
     muted = 'fill="#9eafca"'
     if visual == "nyc":
-        body = svg_text(26, 79, 20, "Student-reported safety by borough", 'font-weight="600"')
+        body = svg_text(26, 79, 17, "Student-reported safety by borough", 'fill="#b9c8e0"')
         left, width = 166, 318
         for tick in (0, 4, 8):
             x = left + tick / 8 * width
@@ -278,7 +316,7 @@ def card_art(visual, evidence, accent, platform):
             body += svg_text(left + length + 8, y + 5, 16, f'{item["score"]:.2f}', 'font-weight="600"')
         return body + svg_text(26, 268, 13, "Saved notebook · mean safety scores", muted)
     if visual == "ai":
-        body = svg_text(26, 79, 20, "A bilingual, portfolio-aware companion", 'font-weight="600"')
+        body = svg_text(26, 79, 17, "A bilingual, portfolio-aware companion", 'fill="#b9c8e0"')
         for index, (label, detail) in enumerate((("Chat", "TR / EN"), ("API", "Context + history"), ("Gemini", "Responses"))):
             x = 28 + index * 182
             border = accent if label == "API" else "#46597b"
@@ -290,7 +328,7 @@ def card_art(visual, evidence, accent, platform):
         body += svg_text(280, 230, 17, "Interface → context → model", muted + ' text-anchor="middle"')
         return body + svg_text(26, 268, 13, "Application flow · external model API", muted)
     if visual == "sales":
-        body = svg_text(26, 79, 20, "Total sales by region", 'font-weight="600"')
+        body = svg_text(26, 79, 17, "Total sales by region", 'fill="#b9c8e0"')
         baseline, height, maximum = 222, 122, 300_000_000
         for tick in (0, 150, 300):
             y = baseline - tick / 300 * height
@@ -304,7 +342,7 @@ def card_art(visual, evidence, accent, platform):
             body += svg_text(x + 22, 242, 14, item["region"], muted + ' text-anchor="middle"')
         return body + svg_text(26, 268, 13, "Sales in millions · saved notebook", muted)
     if visual == "sql":
-        body = svg_text(26, 79, 20, "Customers → orders ← products", 'font-weight="600"')
+        body = svg_text(26, 79, 17, "Customers → orders ← products", 'fill="#b9c8e0"')
         for x, y, width, height, label, fields in (
                 (26, 110, 155, 91, "Customers", (("customer_id", "PK"),)),
                 (209, 98, 142, 130, "Orders", (("order_id", "PK"), ("customer_id", "FK"), ("product_id", "FK"))),
@@ -345,7 +383,8 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
     body = card_art(visual, evidence, accent, platform)
     body += svg_text(534, 268, 12, "zealcoder", 'fill="#8d9fbe" text-anchor="end" letter-spacing=".5"')
     description = " · ".join(reasons) + ". " + metrics(project) + ". Updated " + (project["updated_at"][:10] or "date not provided")
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="288" viewBox="0 0 560 288" role="img" aria-labelledby="title desc">
+    cover_title = shorten(presentation.get("cover_title") or project["title"], 33)
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="336" viewBox="0 0 560 336" role="img" aria-labelledby="title desc">
   <title id="title">{escape(project['title'])}</title>
   <desc id="desc">{escape(description)}</desc>
   <defs>
@@ -353,15 +392,16 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
     <radialGradient id="surface" cx="90%" cy="0%" r="100%"><stop stop-color="#1d2547"/><stop offset="1" stop-color="#0a1224"/></radialGradient>
     <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#8da4dc" stroke-opacity=".07"/></pattern>
   </defs>
-  <rect x="1" y="1" width="558" height="286" rx="17" fill="url(#surface)" stroke="#354465" stroke-width="2"/>
-  <rect x="2" y="2" width="556" height="284" rx="16" fill="url(#grid)"/>
+  <rect x="1" y="1" width="558" height="334" rx="17" fill="url(#surface)" stroke="#354465" stroke-width="2"/>
+  <rect x="2" y="2" width="556" height="332" rx="16" fill="url(#grid)"/>
   <path d="M26 2h136" stroke="url(#accent)" stroke-width="3" stroke-linecap="round"/>
   <g font-family="Arial,sans-serif" fill="#eef2ff">
     {card_mark(visual, accent)}
     <text x="56" y="35" font-size="13" font-weight="700" letter-spacing="1" fill="{accent}">{escape(category)}</text>
     <text x="534" y="35" font-size="11" letter-spacing=".5" text-anchor="end" fill="#b0bed7">{escape(label)}</text>
     <path d="M26 52h508" stroke="#354465"/>
-    {body}
+    <text x="26" y="88" font-size="27" font-weight="700">{escape(cover_title)}</text>
+    <g transform="translate(0 42)">{body}</g>
   </g>
 </svg>
 '''
@@ -370,7 +410,9 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
 def render_highlights(projects, highlights, presentations=None, focus_links=None):
     presentations = presentations or {}
     lookup = {project["key"]: project for project in projects}
-    rows = ["## Project Spotlight", "", "From data exploration to applied AI — methods, outputs and working code.", "", "<table>"]
+    overview_alt = escape(overview_description(projects), quote=True)
+    rows = ["## Project Spotlight", "", "From data exploration to applied AI — methods, outputs and working code.", "",
+            f'<p><img src="./assets/live/overview.svg" width="100%" alt="{overview_alt}" /></p>', "", "<table>"]
     for offset in range(0, len(highlights), 2):
         rows.append("  <tr>")
         for index, highlight in enumerate(highlights[offset:offset + 2], start=offset + 1):
@@ -413,7 +455,7 @@ def render_highlights(projects, highlights, presentations=None, focus_links=None
 
 
 def render_archive(projects):
-    rows = ["## More to Explore", "", "<details>", f"<summary>Browse all {len(projects)} public projects & notebooks</summary>", "", "<ul>"]
+    rows = ["## More to Explore", "", "<details>", f"<summary><strong>Browse all {len(projects)} public projects & notebooks</strong></summary>", "", "<ul>"]
     for project in sorted(projects, key=lambda item: (item["updated_at"], item["key"]), reverse=True):
         description = f'<br/><sub>{escape(project["description"])}</sub>' if project["description"] else ""
         for field, label in (("method", "Approach"), ("result", "Output")):
@@ -453,7 +495,8 @@ def update(root=ROOT, fetch=fetch_json, now=None):
     readme = replace_region(readme, "HIGHLIGHTS", render_highlights(projects, highlights, config.get("presentations"), config.get("focus_links")))
     readme = replace_region(readme, "ARCHIVE", render_archive(projects))
     # Construct all outputs before making any changes to the working tree.
-    outputs = {Path("README.md"): readme, SNAPSHOT: json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n"}
+    outputs = {Path("README.md"): readme, SNAPSHOT: json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n",
+               Path("assets/live/overview.svg"): render_overview(projects)}
     lookup = {project["key"]: project for project in projects}
     presentations = config.get("presentations", {})
     evidence = {}
