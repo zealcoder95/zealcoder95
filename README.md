@@ -20,12 +20,12 @@
 
 From data exploration to applied AI — methods, outputs and working code.
 
-<p><img src="./assets/live/overview.svg" width="100%" alt="14 unique public projects; 11 Kaggle notebooks; 4 GitHub repositories. Linked versions count as one project." /></p>
+<p><img src="./assets/live/overview.svg?v=06a4b4fb6ab1c8a8" width="100%" alt="14 unique public projects; 11 Kaggle notebooks; 4 GitHub repositories. Linked versions count as one project." /></p>
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://github.com/zealcoder95/zealcoder-portfolio"><img src="./assets/live/project-1.svg" width="100%" alt="ZealCat · AI Portfolio — Newest repository; Most starred on GitHub; 1 GitHub star" /></a>
+      <a href="https://github.com/zealcoder95/zealcoder-portfolio"><img src="./assets/live/project-1.svg?v=da85c586dcd369b9" width="100%" alt="ZealCat · AI Portfolio — Newest repository; Most starred on GitHub; 1 GitHub star" /></a>
       <p><a href="https://github.com/zealcoder95/zealcoder-portfolio"><strong>ZealCat · AI Portfolio</strong></a></p>
       <p><strong>Approach</strong> Serverless Gemini API with portfolio context and conversation history.<br/><strong>Output</strong> A bilingual AI companion visitors can try in the live portfolio.</p>
       <p><code>JavaScript</code> <code>Gemini API</code> <code>Vercel</code></p>
@@ -33,7 +33,7 @@ From data exploration to applied AI — methods, outputs and working code.
       <p><sub>1 GitHub star · Updated 2026-10-21</sub></p>
     </td>
     <td width="50%" valign="top">
-      <a href="https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis"><img src="./assets/live/project-2.svg" width="100%" alt="Adidas US Sales Analysis — Most upvoted on Kaggle; 7 Kaggle upvotes" /></a>
+      <a href="https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis"><img src="./assets/live/project-2.svg?v=40953b6d9906b39f" width="100%" alt="Adidas US Sales Analysis — Most upvoted on Kaggle; 7 Kaggle upvotes" /></a>
       <p><a href="https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis"><strong>Adidas US Sales Analysis</strong></a></p>
       <p><strong>Approach</strong> Comparative trend analysis by region, product, retailer and sales channel.<br/><strong>Output</strong> Summarized monthly and regional sales patterns in decision-ready visualizations.</p>
       <p><code>Python</code> <code>Pandas</code> <code>Matplotlib</code> <code>Seaborn</code></p>
@@ -43,7 +43,7 @@ From data exploration to applied AI — methods, outputs and working code.
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data"><img src="./assets/live/project-3.svg" width="100%" alt="Analyzing NYC High School Data — Latest notebook; 0 GitHub stars · 3 Kaggle upvotes" /></a>
+      <a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data"><img src="./assets/live/project-3.svg?v=d39e792300000ba2" width="100%" alt="Analyzing NYC High School Data — Latest notebook; 0 GitHub stars · 3 Kaggle upvotes" /></a>
       <p><a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data"><strong>Analyzing NYC High School Data</strong></a></p>
       <p><strong>Approach</strong> Correlation analysis, visual exploration and multivariable OLS regression.<br/><strong>Output</strong> Surfaced the positive association of school safety and AP participation with SAT performance.</p>
       <p><code>Python</code> <code>Pandas</code> <code>Seaborn</code> <code>Statsmodels</code></p>
@@ -51,7 +51,7 @@ From data exploration to applied AI — methods, outputs and working code.
       <p><sub>3 Kaggle upvotes · Updated 2026-07-10</sub></p>
     </td>
     <td width="50%" valign="top">
-      <a href="https://github.com/zealcoder95/ecommerce-sql-project"><img src="./assets/live/project-4.svg" width="100%" alt="E-commerce SQL — Recently updated; 0 GitHub stars" /></a>
+      <a href="https://github.com/zealcoder95/ecommerce-sql-project"><img src="./assets/live/project-4.svg?v=ddb28b9c2a969ddd" width="100%" alt="E-commerce SQL — Recently updated; 0 GitHub stars" /></a>
       <p><a href="https://github.com/zealcoder95/ecommerce-sql-project"><strong>E-commerce SQL</strong></a></p>
       <p><strong>Approach</strong> Relational modeling, indexed order keys, views and stored procedures.<br/><strong>Output</strong> Reusable queries for customer order totals and date-range reporting.</p>
       <p><code>T-SQL</code> <code>SQL Server</code></p>

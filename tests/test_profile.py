@@ -153,6 +153,23 @@ class ProfileTests(unittest.TestCase):
             self.assertIn("A newly added description", (root / "README.md").read_text())
             self.assertIn("6 GitHub stars", (root / "assets/live/project-1.svg").read_text())
 
+    def test_changed_cover_bytes_refresh_the_image_url_without_source_changes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            self.make_root(root)
+            profile.update(root, self.fake_fetch)
+            before = (root / "README.md").read_text()
+            snapshot = (root / profile.SNAPSHOT).read_bytes()
+            original = profile.render_card
+            def revised(*args, **kwargs):
+                return "<!-- new cover revision -->\n" + original(*args, **kwargs)
+            with patch.object(profile, "render_card", side_effect=revised):
+                self.assertIn("README.md", profile.update(root, self.fake_fetch))
+                self.assertNotEqual((root / "README.md").read_text(), before)
+                self.assertEqual((root / profile.SNAPSHOT).read_bytes(), snapshot)
+                self.assertEqual(profile.update(root, self.fake_fetch), [])
+            self.assertIn("project-1.svg?v=", before)
+
     def test_feed_outage_keeps_cache_and_github_failure_writes_nothing(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

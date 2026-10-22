@@ -5,6 +5,7 @@ import argparse
 import base64
 from datetime import datetime, timezone
 from html import escape
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -407,12 +408,17 @@ def render_card(project, reasons, index, presentation=None, evidence=None):
 '''
 
 
-def render_highlights(projects, highlights, presentations=None, focus_links=None):
+def live_asset_url(filename, versions=None):
+    version = (versions or {}).get(filename)
+    return "./assets/live/" + filename + ("?v=" + version if version else "")
+
+
+def render_highlights(projects, highlights, presentations=None, focus_links=None, asset_versions=None):
     presentations = presentations or {}
     lookup = {project["key"]: project for project in projects}
     overview_alt = escape(overview_description(projects), quote=True)
     rows = ["## Project Spotlight", "", "From data exploration to applied AI — methods, outputs and working code.", "",
-            f'<p><img src="./assets/live/overview.svg" width="100%" alt="{overview_alt}" /></p>', "", "<table>"]
+            f'<p><img src="{live_asset_url("overview.svg", asset_versions)}" width="100%" alt="{overview_alt}" /></p>', "", "<table>"]
     for offset in range(0, len(highlights), 2):
         rows.append("  <tr>")
         for index, highlight in enumerate(highlights[offset:offset + 2], start=offset + 1):
@@ -420,7 +426,7 @@ def render_highlights(projects, highlights, presentations=None, focus_links=None
             link = escape(project["links"][0]["url"], quote=True)
             alt = escape(project["title"] + " — " + "; ".join(highlight["reasons"]) + "; " + metrics(project), quote=True)
             rows.extend(["    <td width=\"50%\" valign=\"top\">",
-                         f'      <a href="{link}"><img src="./assets/live/project-{index}.svg" width="100%" alt="{alt}" /></a>'])
+                         f'      <a href="{link}"><img src="{live_asset_url(f"project-{index}.svg", asset_versions)}" width="100%" alt="{alt}" /></a>'])
             rows.append(f'      <p><a href="{link}"><strong>{escape(project["title"])}</strong></a></p>')
             details = []
             for field, label, length in (("method", "Approach", 115), ("result", "Output", 140)):
@@ -492,10 +498,8 @@ def update(root=ROOT, fetch=fetch_json, now=None):
         snapshot["updated_at"] = previous["updated_at"]
     else:
         snapshot["updated_at"] = date(now or datetime.now(timezone.utc).isoformat())
-    readme = replace_region(readme, "HIGHLIGHTS", render_highlights(projects, highlights, config.get("presentations"), config.get("focus_links")))
-    readme = replace_region(readme, "ARCHIVE", render_archive(projects))
     # Construct all outputs before making any changes to the working tree.
-    outputs = {Path("README.md"): readme, SNAPSHOT: json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n",
+    outputs = {SNAPSHOT: json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n",
                Path("assets/live/overview.svg"): render_overview(projects)}
     lookup = {project["key"]: project for project in projects}
     presentations = config.get("presentations", {})
@@ -507,6 +511,12 @@ def update(root=ROOT, fetch=fetch_json, now=None):
         evidence["adana"]["image_data"] = "data:image/png;base64," + base64.b64encode(image).decode("ascii")
     for index, highlight in enumerate(highlights, start=1):
         outputs[Path(f"assets/live/project-{index}.svg")] = render_card(lookup[highlight["key"]], highlight["reasons"], index, presentations.get(highlight["key"]), evidence)
+    # Version only changed image bytes, so GitHub's image cache refreshes while
+    # identical source data remains idempotent.
+    versions = {path.name: hashlib.sha256(content.encode("utf-8")).hexdigest()[:16]
+                for path, content in outputs.items() if path.suffix == ".svg"}
+    readme = replace_region(readme, "HIGHLIGHTS", render_highlights(projects, highlights, presentations, config.get("focus_links"), versions))
+    outputs[Path("README.md")] = replace_region(readme, "ARCHIVE", render_archive(projects))
     changed = []
     for relative, content in outputs.items():
         path = root / relative
