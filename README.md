@@ -25,12 +25,12 @@ From data exploration to applied AI — methods, outputs and working code.
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="https://github.com/zealcoder95/zealcoder-portfolio"><img src="./assets/live/project-1.svg?v=ee3714a752b0c9a8" width="100%" alt="ZealCat · AI Portfolio — Newest repository; Most starred on GitHub; 1 GitHub star" /></a>
+      <a href="https://github.com/zealcoder95/zealcoder-portfolio"><img src="./assets/live/project-1.svg?v=be0aecab6a9f655f" width="100%" alt="ZealCat · AI Portfolio — Newest repository; Most starred on GitHub; 1 GitHub star" /></a>
       <p><a href="https://github.com/zealcoder95/zealcoder-portfolio"><strong>ZealCat · AI Portfolio</strong></a></p>
       <p><strong>Approach</strong> Serverless Gemini API with portfolio context and conversation history.<br/><strong>Output</strong> A bilingual AI companion visitors can try in the live portfolio.</p>
       <p><code>JavaScript</code> <code>Gemini API</code> <code>Vercel</code></p>
       <p><a href="https://zealcoder-portfolio.vercel.app">Try ZealCat ↗</a> · <a href="https://github.com/zealcoder95/zealcoder-portfolio">GitHub ↗</a></p>
-      <p><sub>1 GitHub star · Updated 2026-10-22</sub></p>
+      <p><sub>1 GitHub star · Updated 2026-10-23</sub></p>
     </td>
     <td width="50%" valign="top">
       <a href="https://www.kaggle.com/code/gizemglc/adidas-us-sales-analysis"><img src="./assets/live/project-2.svg?v=40953b6d9906b39f" width="100%" alt="Adidas US Sales Analysis — Most upvoted on Kaggle; 7 Kaggle upvotes" /></a>
@@ -101,7 +101,7 @@ From data exploration to applied AI — methods, outputs and working code.
 <summary><strong>Browse all 14 public projects & notebooks</strong></summary>
 
 <ul>
-  <li><p><strong>ZealCat · AI Portfolio</strong> · <a href="https://github.com/zealcoder95/zealcoder-portfolio">GitHub</a><br/><sub>A bilingual portfolio with a context-aware AI companion and a serverless Gemini integration.</sub><br/><sub>Approach: Serverless Gemini API with portfolio context and conversation history.</sub><br/><sub>Output: A bilingual AI companion visitors can try in the live portfolio.</sub><br/><sub>1 GitHub star · Updated 2026-10-22</sub></p></li>
+  <li><p><strong>ZealCat · AI Portfolio</strong> · <a href="https://github.com/zealcoder95/zealcoder-portfolio">GitHub</a><br/><sub>A bilingual portfolio with a context-aware AI companion and a serverless Gemini integration.</sub><br/><sub>Approach: Serverless Gemini API with portfolio context and conversation history.</sub><br/><sub>Output: A bilingual AI companion visitors can try in the live portfolio.</sub><br/><sub>1 GitHub star · Updated 2026-10-23</sub></p></li>
   <li><p><strong>Analyzing NYC High School Data</strong> · <a href="https://github.com/zealcoder95/Analyzing-NYC-High-School-Data">GitHub</a> · <a href="https://www.kaggle.com/code/gizemglc/analyzing-nyc-high-school-data">Kaggle</a><br/><sub>An analysis exploring the relationship between SAT scores and socioeconomic and real-estate data across New York City high schools.</sub><br/><sub>Approach: Correlation analysis, visual exploration and multivariable OLS regression.</sub><br/><sub>Output: Surfaced the positive association of school safety and AP participation with SAT performance.</sub><br/><sub>0 GitHub stars · 3 Kaggle upvotes · Updated 2026-07-10</sub></p></li>
   <li><p><strong>E-commerce SQL</strong> · <a href="https://github.com/zealcoder95/ecommerce-sql-project">GitHub</a><br/><sub>Relational database design, views, stored procedures and analytical queries.</sub><br/><sub>Approach: Relational modeling, indexed order keys, views and stored procedures.</sub><br/><sub>Output: Reusable queries for customer order totals and date-range reporting.</sub><br/><sub>0 GitHub stars · Updated 2026-07-10</sub></p></li>
   <li><p><strong>Data Science Bootcamp Exercises</strong> · <a href="https://github.com/zealcoder95/TurkStudentCo-DSB-homework">GitHub</a><br/><sub>Coursework and practice from the TurkStudentCo data science bootcamp.</sub><br/><sub>0 GitHub stars · Updated 2024-09-27</sub></p></li>
